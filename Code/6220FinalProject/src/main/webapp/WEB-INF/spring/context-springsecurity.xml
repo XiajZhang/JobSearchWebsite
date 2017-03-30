@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+
+	<http use-expressions="true">
+		<intercept-url pattern="/home" access="permitAll"/>
+		<intercept-url pattern="/jobs/home/searchJobs" access="permitAll"/>
+		<intercept-url pattern="/jobs/jobSubmitted" access="hasAuthority('employer')"/>
+		<intercept-url pattern="/jobs/publish" access="hasAuthority('employer')"/>
+		<intercept-url pattern="/userInfo/editUser" access="isAuthenticated()"/>
+		<intercept-url pattern="/jobs/**" access="isAuthenticated()"/>
+		<intercept-url pattern="/jobs" access="isAuthenticated()"/>
+		<intercept-url pattern="/message/**" access="isAuthenticated()"/>
+		<intercept-url pattern="/message" access="isAuthenticated()"/>
+		<intercept-url pattern="/application/**" access="isAuthenticated()"/>
+		<intercept-url pattern="/application" access="isAuthenticated()"/>
+		<intercept-url pattern="/users/**" access="permitAll"/>
+		<intercept-url pattern="/users" access="permitAll"/>
+		<intercept-url pattern="/jobList" access="isAuthenticated()"/>
+		<intercept-url pattern="/articles" access="isAuthenticated()"/>
+		<intercept-url pattern="/UI" access="isAuthenticated()"/>
+		<intercept-url pattern="/userInfo" access="isAuthenticated()"/>
+		<intercept-url pattern="/loggedout" access="permitAll"/>
+		<intercept-url pattern="/" access="permitAll"/>
+		<intercept-url pattern="/resources/**" access="permitAll"/>
+		<intercept-url pattern="/signin" access="permitAll"/>
+		<intercept-url pattern="/**" access="denyAll" />
+		<form-login login-page="/signin"
+			authentication-failure-url="/signin?error=true"
+			default-target-url="/jobList" always-use-default-target="true" />
+		<csrf disabled="true"/>
+		<logout logout-success-url="/loggedout" />
+	</http>
+
+	<authentication-manager>
+    	<!-- in-memory authentication provider, only useful for prototype applications that don't require complex security infrastructure -->
+        <authentication-provider>
+            <user-service>
+                <user name="user" password="password" authorities="employer" />
+            </user-service>
+        </authentication-provider>
+        <authentication-provider>
+        	<jdbc-user-service data-source-ref="dataSource"
+        		users-by-username-query="select username,password,enabled from users where binary username=?"
+        		authorities-by-username-query="select username,authority from users where binary username =?" />
+        </authentication-provider>
+	</authentication-manager>
+	<!-- method level role control -->
+	<global-method-security secured-annotations="enabled"></global-method-security>
+</beans:beans>

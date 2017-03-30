@@ -1,0 +1,122 @@
+@CHARSET "UTF-8";
+
+.error {
+	font-size: small;
+	color: red;
+	margin-left: 10px;
+}
+
+.carousel {
+	height: 500px;
+/* 	margin-bottom: 60px; */
+}
+.upper{
+	margin-bottom: 60px;
+}
+
+.carousel .item {
+	height: 500px;
+	background-color: #000;
+}
+
+.carousel .item img {
+	width: 100%;
+}
+
+.carousel-caption {
+	z-index: 10;
+}
+
+.carousel-caption p {
+	margin-bottom: 20px;
+	font-size: 20px;
+	line-height: 1.8;
+}
+
+body {
+	padding-bottom: 50px;
+}
+.content{
+	background-image: url(clouds.jpg);
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+}
+
+.header {
+	border-style: none;
+	border-bottom-style: solid;
+	border-color: black;
+	margin: 20px;
+	margin-top:0px;
+}
+.searchResult{
+	font-size:30px;
+	color: white;
+}
+.headerP {
+	font-size: 60px;
+	font-family: Zapf Chancery;
+	padding-top: 40px;
+	color: white;
+}
+
+.headerP2 {
+	font-size: 30px;
+	font-family: Zapf Chancery;
+	color: black;
+	padding-left: 30px;
+	width:50%;
+}
+.enter{
+	font-size:30px;
+	color:black;
+}
+
+a:link {
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
+a:hover {
+	color: hotpink;
+}
+
+a:active {
+	color: blue;
+}
+.login{
+	margin: 10px;
+	padding-top:50px;
+	padding-bottom:50px;
+	padding-left: 30px;
+	font-size: 60px;
+	color: black;
+	
+}
+#row2{
+	font-size:10px;
+}
+.hello{
+	padding-bottom:30px;
+	
+}
+.congras{
+	font-size:30px;
+	padding-top:60px;
+}
+.congras2{
+	font-size:30px;
+}
+.congrasL{
+	font-size:20px;
+}
+.divided {
+height:1px;
+width:100%;
+background:grey;
+overflow:hidden;
+}
+
